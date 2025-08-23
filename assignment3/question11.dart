@@ -1,4 +1,4 @@
-void question12() {
+void main() {
   double price = 180;
   bool isStudent = true;
   bool hasCoupon = false;
