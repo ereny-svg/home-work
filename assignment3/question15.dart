@@ -1,17 +1,26 @@
-void question16() {
-  String path = '/products';
-
+void main() {
+  String path = '/';
+  Map<String, String> pathes = {
+    '/': 'splash screen',
+    'products': 'home screen',
+    'profile': 'profile screen',
+    'other': 'edit screen',
+  };
   switch (path) {
     case '/':
-      print('/');
+      print(pathes['/']);
       break;
-    case '/products':
-      print('Products');
+
+    case 'products':
+      print(pathes['products']);
       break;
-    case '/profile':
-      print('Profile');
+
+    case 'profile':
+      print(pathes['profile']);
       break;
-    default:
-      print('Error');
+
+    case 'other':
+      print(pathes['other']);
+      break;
   }
 }

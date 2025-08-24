@@ -1,13 +1,12 @@
 void main() {
-  Map<String, String?> ereny = {
-    'ereny': null,
-    'phone': '0124567788',
+  Map<String, dynamic> environment = {
+    'envi1': null,
+    'envi2': 'temperature',
   };
-  String erenyValue = ereny['ereny'] ?? 'engy';
-  String phone = ereny['phone']!.toUpperCase();
-  print(erenyValue.toUpperCase());
-  print(phone);
-  if (erenyValue == 'engy') {
+  String value1 = environment['envi1'] ?? 'soil';
+  environment['envi1'] = 'soil';
+  print(value1.toUpperCase());
+  if (environment['envi1'] == null) {
     print('Prod ready');
   } else {
     print('Non-prod');

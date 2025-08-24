@@ -1,12 +1,8 @@
 void main() {
-  Map<String, String?> contact = {
-    'name': 'Ereny',
-    'phone': null
-  };
-  String? phone = contact['phone'];
-  if (phone == null) {
-    print('Phone number is missing.');
+  Map<String, dynamic> info = {'ereny': null};
+  if (info['ereny'] == null) {
+    print("phone is not found");
   }
-  contact['phone'] = '0123456789';
-  print(contact['phone']!.length);
+  info['ereny'] = 0124566654;
+  print(info.length);
 }

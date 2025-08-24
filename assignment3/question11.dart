@@ -1,17 +1,17 @@
 void main() {
-  double price = 180;
   bool isStudent = true;
-  bool hasCoupon = false;
-
-  if (price > 100) {
-    if (isStudent) {
-      price *= 0.85;
+  bool hasCoupon = true;
+  double discount = 0.75;
+  num price = 500;
+  if (price < 200) {
+    print(price);
+  } else if (isStudent) {
+    if (!hasCoupon) {
+      price = price;
+      print(price);
     } else if (hasCoupon) {
-      price *= 0.9;
-    } else {
-      price *= 0.95;
+      price = price - (price * discount);
+       print(price);
     }
   }
-
-  print(price.toStringAsFixed(2));
 }

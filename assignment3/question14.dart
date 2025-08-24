@@ -1,12 +1,12 @@
 void main() {
-  List<int>? scores = [60,30,90];
-  if (scores == null || scores.isEmpty) {
-    print('No scores');
+  List<dynamic> nums = [10, 20, 30];
+  if (nums.isEmpty) {
+    print("No Scores");
+  }
+  print(nums[0] + nums[2]);
+  if (nums[0] + nums[2] >= 40) {
+    print("Yes");
   } else {
-    int sum = scores.first + scores.last;
-    print(sum);
-    if (sum >= 40) {
-      print('Passed threshold');
-    }
+    print("No");
   }
 }

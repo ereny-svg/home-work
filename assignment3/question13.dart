@@ -1,31 +1,32 @@
-void main (){
-  int mark = 60;
+void main() {
   String grade;
-
-  if (mark >= 90) {
-    grade = 'A';
-  } else if (mark >= 80) {
-    grade = 'B';
-  } else if (mark >= 70) {
-    grade = 'C';
+  int mark = 80;
+  if (mark > 80) {
+    print("A");
+    grade='A';
+  } else if (mark > 70) {
+    print("B");
+    grade='B';
+  } else if (mark > 60 || mark > 50) {
+    print("C");
+    grade='C';
   } else {
-    grade = 'D';
+    print("D");
+    grade='D';
   }
 
   switch (grade) {
-    case 'A':
-      print('Excellent!');
+    case "A":
+      print("very very very good");
       break;
-    case 'B':
-      print('Very good!');
+    case "B":
+      print("very very good");
       break;
-    case 'C':
-      print('Good.');
+    case "C":
+      print("very good");
       break;
-    case 'D':
-      print('Needs improvement.');
-      break;
-    default:
-      print('Invalid grade.');
+    default :
+      print("very good");
+      
   }
 }
