@@ -42,13 +42,27 @@ class _MyAppState extends State<MyApp> {
                   ),
                   Gender(),
                   HeightRow(
+                    height: height,
                     onHeightChanged: (value) {
                       height = value;
+                      setState(() {});
                     },
                   ),
                   WeightAgeRow(
-                    onWeightChanged: (value) {
-                      weight = value;
+                    onWeightChangedRemove: () {
+                      if(weight>0){
+                         weight--;
+                      setState(() {
+                        
+                      });
+                      }
+                    },
+                    weight: weight,
+                    onWeightChangedAdd: () {
+                      weight++;
+                      setState(() {
+                        
+                      });
                     },
                   ),
                 ],

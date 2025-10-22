@@ -1,8 +1,15 @@
 import 'package:flutter/material.dart';
 
 class WeightAgeRow extends StatefulWidget {
-  final ValueChanged<double> onWeightChanged;
-  const WeightAgeRow({super.key, required this.onWeightChanged});
+  final double weight;
+  final VoidCallback onWeightChangedAdd;
+  final VoidCallback onWeightChangedRemove;
+  const WeightAgeRow({
+    super.key,
+    required this.weight,
+    required this.onWeightChangedAdd,
+    required this.onWeightChangedRemove,
+  });
 
   @override
   State<WeightAgeRow> createState() => _WeightAgeRowState();
@@ -35,7 +42,7 @@ class _WeightAgeRowState extends State<WeightAgeRow> {
                 ),
                 Center(
                   child: Text(
-                    "$weight",
+                    "${widget.weight}",
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       color: Colors.white,
@@ -53,13 +60,7 @@ class _WeightAgeRowState extends State<WeightAgeRow> {
                           padding: EdgeInsets.all(10),
                           backgroundColor: Color(0xFF4B4E5F),
                         ),
-                        onPressed: () {
-                          if (weight > 1) {
-                            weight--;
-                            setState(() {});
-                            widget.onWeightChanged(weight);
-                          }
-                        },
+                        onPressed: widget.onWeightChangedRemove,
                         child: Center(
                           child: Icon(
                             Icons.remove,
@@ -76,11 +77,7 @@ class _WeightAgeRowState extends State<WeightAgeRow> {
                           padding: EdgeInsets.all(10),
                           backgroundColor: Color(0xFF4B4E5F),
                         ),
-                        onPressed: () {
-                          weight++;
-                          setState(() {});
-                          widget.onWeightChanged(weight);
-                        },
+                        onPressed: widget.onWeightChangedAdd,
                         child: Center(
                           child: Icon(
                             Icons.add,
@@ -137,8 +134,10 @@ class _WeightAgeRowState extends State<WeightAgeRow> {
                           backgroundColor: Color(0xFF4B4E5F),
                         ),
                         onPressed: () {
-                          age--;
-                          setState(() {});
+                          if (age > 0) {
+                            age--;
+                            setState(() {});
+                          }
                         },
                         child: Center(
                           child: Icon(

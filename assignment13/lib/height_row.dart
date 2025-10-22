@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 
 class HeightRow extends StatefulWidget {
-  final ValueChanged<double> onHeightChanged;
-  const HeightRow({super.key, required this.onHeightChanged});
+  double height;
+  ValueChanged<double> onHeightChanged;
+
+  HeightRow({super.key, required this.height, required this.onHeightChanged});
 
   @override
   State<HeightRow> createState() => _HeightRowState();
 }
 
 class _HeightRowState extends State<HeightRow> {
-  double height = 174;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -27,7 +28,7 @@ class _HeightRowState extends State<HeightRow> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                "$height",
+                "${widget.height.toInt()}",
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   color: Colors.white,
@@ -50,14 +51,10 @@ class _HeightRowState extends State<HeightRow> {
                 trackHeight: 2,
               ),
               child: Slider(
-                value: height,
+                value: widget.height,
                 min: 100,
                 max: 220,
-                onChanged: (double value) {
-                  height = value.roundToDouble();
-                  setState(() {});
-                  widget.onHeightChanged(value);
-                },
+                onChanged: widget.onHeightChanged,
               ),
             ),
           ),
