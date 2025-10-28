@@ -1,23 +1,48 @@
+import 'package:assignment13/models/bmi_calculator.dart';
 import 'package:assignment13/results_screen.dart';
 import 'package:flutter/material.dart';
 
 class CalculateButton extends StatelessWidget {
-  double cHeight ;
-  double cWeight ;
-   CalculateButton({super.key,required this.cHeight,required this.cWeight});
+ final BmiCalculator bmiCalculator;
+  const CalculateButton({super.key, required this.bmiCalculator});
 
   @override
   Widget build(BuildContext context) {
+    
     return Column(
       children: [
         SizedBox(height: 35),
         GestureDetector(
           onTap: () {
-            double bmi = cWeight / ((cHeight / 100) * (cHeight / 100));
+            num bmi = bmiCalculator.CalculteBmi();
+            String resultText;
+            String interpretation;
 
+            if (bmi < 18.5) {
+              resultText = "Underweight";
+              interpretation =
+                  "You have a lower than normal body weight. Try to eat more.";
+            } else if (bmi < 25) {
+              resultText = "Normal";
+              interpretation = "You have a normal body weight. Good job!";
+            } else if (bmi < 30) {
+              resultText = "Overweight";
+              interpretation =
+                  "You have a higher than normal body weight. Try to exercise more.";
+            } else {
+              resultText = "Obese";
+              interpretation =
+                  "You have obesity. Consult a healthcare provider.";
+            }
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => ResultsScreen(bmi: bmi,)),
+              MaterialPageRoute(
+                builder: (context) => ResultsScreen(
+                  currentBmi: bmi,
+                  resultText: resultText,
+                  interpretation: interpretation,
+                ),
+              ),
             );
           },
           child: Container(

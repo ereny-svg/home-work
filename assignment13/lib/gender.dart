@@ -1,60 +1,43 @@
+import 'package:assignment13/gender_selection_item.dart';
 import 'package:flutter/material.dart';
 
-class Gender extends StatelessWidget {
+class Gender extends StatefulWidget {
   const Gender({super.key});
 
+  @override
+  State<Gender> createState() => _GenderState();
+}
+
+class _GenderState extends State<Gender> {
+  bool onclicked = true;
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
         Expanded(
-          child: Container(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(16),
-              color: Color(0xFF090B24),
-            ),
-            height: 170,
-
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Icon(
-                  Icons.male,
-                  color: Colors.white,
-                  size: 95,
-                  fontWeight: FontWeight.w700,
-                ),
-                Text(
-                  "MALE",
-                  style: TextStyle(color: Colors.grey, fontSize: 22),
-                ),
-              ],
+          child: GestureDetector(
+            onTap: () {
+              onclicked = true;
+              setState(() {});
+            },
+            child: GenderSelectionItem(
+              icon: Icons.male,
+              text: "MALE",
+              color: onclicked ? Color(0xFF090B24) : Color(0xFF17172F),
             ),
           ),
         ),
         SizedBox(width: 32),
         Expanded(
-          child: Container(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(16),
-              color: Color(0xFF17172F),
-            ),
-            height: 170,
-
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Icon(
-                  Icons.female,
-                  color: Colors.white,
-                  size: 95,
-                  fontWeight: FontWeight.w700,
-                ),
-                Text(
-                  "FEMALE",
-                  style: TextStyle(color: Colors.grey, fontSize: 22),
-                ),
-              ],
+          child: GestureDetector(
+            onTap: () {
+              onclicked = false;
+              setState(() {});
+            },
+            child: GenderSelectionItem(
+              icon: Icons.female,
+              text: "FEMALE",
+              color: !onclicked ? Color(0xFF090B24) : Color(0xFF17172F),
             ),
           ),
         ),
