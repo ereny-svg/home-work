@@ -1,6 +1,6 @@
-import 'package:assignment13/custom_container.dart';
+import 'package:assignment13/components/custom_container.dart';
 import 'package:assignment13/models/bmi_calculator.dart';
-import 'package:assignment13/weight_age_item.dart';
+import 'package:assignment13/weight_and_age/weight_age_item.dart';
 import 'package:flutter/material.dart';
 
 class WeightAgeRow extends StatefulWidget {

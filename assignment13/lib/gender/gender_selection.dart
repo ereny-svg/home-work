@@ -1,14 +1,15 @@
-import 'package:assignment13/gender_selection_item.dart';
+
+import 'package:assignment13/gender/gender_selection_item.dart';
 import 'package:flutter/material.dart';
 
-class Gender extends StatefulWidget {
-  const Gender({super.key});
+class GenderSelection extends StatefulWidget {
+  const GenderSelection({super.key});
 
   @override
-  State<Gender> createState() => _GenderState();
+  State<GenderSelection> createState() => _GenderSelectionState();
 }
 
-class _GenderState extends State<Gender> {
+class _GenderSelectionState extends State<GenderSelection> {
   bool onclicked = true;
   @override
   Widget build(BuildContext context) {

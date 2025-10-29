@@ -1,5 +1,5 @@
 import 'package:assignment13/models/bmi_calculator.dart';
-import 'package:assignment13/results_screen.dart';
+import 'package:assignment13/screens/results_screen.dart';
 import 'package:flutter/material.dart';
 
 class CalculateButton extends StatelessWidget {

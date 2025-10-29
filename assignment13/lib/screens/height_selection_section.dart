@@ -1,17 +1,17 @@
-import 'package:assignment13/custom_container.dart';
-import 'package:assignment13/custom_slider.dart';
+import 'package:assignment13/components/custom_container.dart';
+import 'package:assignment13/components/custom_slider.dart';
 import 'package:assignment13/models/bmi_calculator.dart';
 import 'package:flutter/material.dart';
 
-class HeightRow extends StatefulWidget {
+class HeightSelectionSection extends StatefulWidget {
   final BmiCalculator bmiCalculator;
-  const HeightRow({super.key, required this.bmiCalculator});
+  const HeightSelectionSection({super.key, required this.bmiCalculator});
 
   @override
-  State<HeightRow> createState() => _HeightRowState();
+  State<HeightSelectionSection> createState() => _HeightSelectionSectionState();
 }
 
-class _HeightRowState extends State<HeightRow> {
+class _HeightSelectionSectionState extends State<HeightSelectionSection> {
   double height = 174;
 
   @override
