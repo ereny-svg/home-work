@@ -1,55 +1,79 @@
-import 'package:assignment14/models/to_do_model.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
-class TaskItem extends StatelessWidget {
+class TaskItem extends StatefulWidget {
   final String taskText;
+  final Function() onpressed;
 
-  const TaskItem({required this.taskText});
+  const TaskItem({super.key, required this.taskText, required this.onpressed});
+
+  @override
+  State<TaskItem> createState() => _TaskItemState();
+}
+
+class _TaskItemState extends State<TaskItem> {
+  bool completedTask = false;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(28),
-      margin: EdgeInsets.all(16),
+      padding: const EdgeInsets.all(20),
+      margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       decoration: BoxDecoration(
+        color: const Color(0xFFEFF5F3),
+        borderRadius: BorderRadius.circular(16),
         boxShadow: [
           BoxShadow(
-            color: Colors.grey.withValues(alpha: 0.5),
-            blurRadius: 10,
-
-            offset: Offset(0, 4),
+            color: Colors.grey.withValues(alpha: 0.4),
+            blurRadius: 6,
+            offset: const Offset(0, 3),
           ),
         ],
-        borderRadius: BorderRadius.circular(16),
-        color: Color(0xFFEFF5F3),
       ),
-      alignment: Alignment.topCenter,
       child: Row(
         children: [
-          Icon(Icons.check_box, color: Color(0xFF01695B)),
-          Spacer(flex: 1),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            spacing: 4,
-            children: [
-              Text(
-                taskText,
-                style: TextStyle(
-                  fontSize: 18,
-                  color: Colors.black.withValues(alpha: 0.6),
-                ),
-              ),
-              Text(
-                "Created : 7/11/2004",
-                style: TextStyle(
-                  fontSize: 16,
-                  color: Colors.black.withValues(alpha: 0.3),
-                ),
-              ),
-            ],
+          IconButton(
+            onPressed: () {
+              setState(() {
+                completedTask = !completedTask;
+              });
+            },
+            icon: Icon(
+              completedTask ? Icons.check_box : Icons.check_box_outline_blank,
+              color: completedTask ? const Color(0xFF01695B) : Colors.black,
+            ),
           ),
-          Spacer(flex: 8),
-          Icon(Icons.delete_outline, color: Colors.red),
+          const SizedBox(width: 10),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  widget.taskText,
+                  style: TextStyle(
+                    fontSize: 18,
+                    color: completedTask
+                        ? Colors.black.withValues(alpha: 0.6)
+                        : Colors.black,
+                    decoration: completedTask
+                        ? TextDecoration.lineThrough
+                        : TextDecoration.none,
+                  ),
+                ),
+                Text(
+                  DateFormat('dd/MM/yyyy').format(DateTime.now()),
+                  style: TextStyle(
+                    fontSize: 14,
+                    color: Colors.black.withValues(alpha: 0.3),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          IconButton(
+            onPressed: widget.onpressed,
+            icon: const Icon(Icons.delete_outline, color: Colors.red),
+          ),
         ],
       ),
     );

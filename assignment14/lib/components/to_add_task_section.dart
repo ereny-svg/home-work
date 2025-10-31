@@ -1,11 +1,14 @@
-import 'package:assignment14/components/text_field_widget.dart';
-import 'package:assignment14/models/to_do_model.dart';
 import 'package:flutter/material.dart';
 
 class ToAddTaskSection extends StatelessWidget {
-  final Function() toAddTask;
-  final ToDoModel toDoModel;
-  const ToAddTaskSection({required this.toDoModel, required this.toAddTask});
+  final TextEditingController controller;
+  final Function() onAdd;
+
+  const ToAddTaskSection({
+    super.key,
+    required this.controller,
+    required this.onAdd,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -16,30 +19,43 @@ class ToAddTaskSection extends StatelessWidget {
           BoxShadow(
             color: Colors.grey.withValues(alpha: 0.2),
             blurRadius: 4,
-            offset: Offset(0, -3),
+            offset: const Offset(0, -3),
           ),
         ],
       ),
-      padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       child: Row(
-        spacing: 8,
         children: [
-          Expanded(child: TextFieldWidget(toDoModel: toDoModel)),
+          Expanded(
+            child: TextField(
+              controller: controller,
+              decoration: InputDecoration(
+                hintText: "Add a new task...",
+                filled: true,
+                fillColor: const Color(0xFFEEF4F2),
+                contentPadding:
+                    const EdgeInsets.symmetric(horizontal: 16, vertical: 18),
+                enabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(30),
+                  borderSide: const BorderSide(color: Color(0xFFEEF4F2)),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(30),
+                  borderSide: const BorderSide(color: Color(0xFFEEF4F2)),
+                ),
+              ),
+            ),
+          ),
+          const SizedBox(width: 8),
           GestureDetector(
-            onTap: () {
-              if (toDoModel.textController.text.isNotEmpty) {
-                toDoModel.tasks.add(toDoModel.textController.text);
-                toDoModel.textController.clear();
-                toAddTask();
-              }
-            },
+            onTap: onAdd,
             child: Container(
-              padding: EdgeInsets.all(16),
+              padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(50),
-                color: Color(0xFFDEE4E2),
+                color: const Color(0xFFDEE4E2),
               ),
-              child: Icon(Icons.add, color: Colors.grey, size: 21),
+              child: const Icon(Icons.add, color: Colors.grey, size: 21),
             ),
           ),
         ],

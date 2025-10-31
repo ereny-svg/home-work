@@ -9,7 +9,7 @@ class ZeroTasks extends StatelessWidget {
       margin: EdgeInsets.only(top: 250),
       child: Column(
         children: [
-          Icon(Icons.check_circle_outline, size: 80, color: Color(0xFFAACECB)),
+          Icon(Icons.task_alt_outlined, size: 80, color: Color(0xFFAACECB)),
           Text(
             "No tasks yet",
             style: TextStyle(
