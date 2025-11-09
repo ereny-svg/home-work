@@ -1,6 +1,6 @@
 class AnswerModel {
   final String text;
-  final bool isSelected;
+ bool isSelected;
   AnswerModel(this.text, {this.isSelected=false});
 
   
